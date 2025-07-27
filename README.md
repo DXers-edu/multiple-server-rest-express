@@ -42,7 +42,7 @@ npm run start
 
 ```properties
 PORT=4000
-MONGO_URI=mongodb://prd_user:StrongP!ssw0rd@localhost:27017/multiple_server?authSource=multiple_server
+MONGO_URI=mongodb://prd_user:StrongP!ssw0rd@데이터베이스서버프라이빗IP:27017/multiple_server?authSource=multiple_server
 JWT_SECRET=qwertyuioplkjhgfdsazxcvbnm1234567890
 JWT_EXPIRES_IN=1h
 BCRYPT_SALT_ROUNDS=10
@@ -54,8 +54,15 @@ BCRYPT_SALT_ROUNDS=10
 module.exports = {
    apps : [{
         name: 'multiple-server-rest-express',
-        script: 'node ./src/server.js',
-        watch: './',
+        script: 'node multiple-server-rest-express/src/server.js',
+        watch: 'multiple-server-rest-express/',
+        env: {
+            PORT: 4000,
+            MONGO_URI: 'mongodb://prd_user:StrongP!ssw0rd@데이터베이스서버프라이빗IP:27017/multiple_server?authSource=multiple_server',
+            JWT_SECRET: 'qwertyuioplkjhgfdsazxcvbnm1234567890',
+            JWT_EXPIRES_IN: '1h',
+            BCRYPT_SALT_ROUNDS: 10
+        }
    }]
 };
 ```
